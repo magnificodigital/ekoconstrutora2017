@@ -17,6 +17,9 @@
 				<form id="form-home_newsletter" class="form" method="post">
 					<input type="text" name="nome" placeholder="NOME" class="required" required />
 					<input type="text" name="email" placeholder="E-MAIL" class="required" required />
+					<?php if (empty($token)) : ?>
+					<input type="hidden" name="assunto" value="Nova conversão - Newsletter - <?php bloginfo('name'); ?>">
+					<?php endif; ?>
 					<input type="hidden" id="token_rdstation" name="token_rdstation" value="<?php echo $token; ?>">
 					<input type="hidden" id="identificador" name="identificador" value="Site <?php bloginfo('name'); ?> - Newsletter">
 					<button type="button">Assinar</button>

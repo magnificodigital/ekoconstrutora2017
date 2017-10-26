@@ -82,3 +82,16 @@ jQuery(document).ready(function(){
 		},'html');
 	});
 });
+
+function enviaemail(dados) {
+
+	var dados = {
+		'action': 'enviaemail',
+		'dados' : dados
+	};
+
+	jQuery.post(ajax_object.ajax_url, dados, function(resposta) {
+		$('.resposta').html(resposta.mensagem);
+	}, 'json');
+
+}

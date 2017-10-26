@@ -737,12 +737,24 @@ function my_general_section() {
         )  
     );
 
+     add_settings_field( 
+        'email_envio', 
+        'Email para envio',
+        'my_textbox_callback', 
+        'general', 
+        'enderecos',
+        array( 
+            'email_envio' // Should match Option ID
+        )  
+    );
+
     register_setting('general','facebook_icon', 'esc_attr');
     register_setting('general','instagram_icon', 'esc_attr');
     register_setting('general','youtube_icon', 'esc_attr');
     register_setting('general','address_icon', 'esc_attr');
     register_setting('general','phone_icon', 'esc_attr');
     register_setting('general','token_rd', 'esc_attr');
+    register_setting('general','email_envio', 'esc_attr');
 
 }
 
@@ -816,8 +828,40 @@ function tira_admin_corretor() {
 		}
 	}
 }
-
 add_action('admin_menu', 'tira_admin_corretor');
+
+
+//Dados do corretor
+add_action('wp_ajax_enviaemail', 'envia_email');
+add_action('wp_ajax_nopriv_enviaemail', 'envia_email');
+function envia_email() {
+
+	parse_str($_REQUEST['dados'], $dados);
+
+	$to = get_option('email_envio');
+	$subject = $dados['assunto'];
+	$mensagem = "Nova conversão realizada\n\n";
+	foreach ($dados as $dado => $value) {
+		if ($dado != "assunto" && $dado != "identificador" && $dado != "token_rdstation") {
+			$mensagem .= $dado.": ";
+			$mensagem .= $value."\n";
+		}
+	}
+	/*
+	$mensagem .= "Nome: ".$dados['nome']."\n";
+	$mensagem .= "E-mail: ".$dados['email']."\n";
+	$mensagem .= "Telefone: ".$dados['telefone'];	*/
+
+	if (wp_mail($to, $subject, $mensagem)) {
+		echo json_encode(array('mensagem' => 'Obrigado pelo seu cadastro'));
+	} else {
+		echo json_encode(array('mensagem' => 'Cadastro não concluído, tente novamente'));
+	}
+
+	wp_die();
+	
+}
+
 
 //Dados do corretor
 add_action('wp_ajax_dados_corretor', 'update_dados_corretor');
@@ -1138,3 +1182,10 @@ function myprefix_redirect_attachment_page() {
 add_action( 'template_redirect', 'myprefix_redirect_attachment_page' );
 
 
+
+add_filter('wp_mail_from_name','custom_email_from_name');
+
+function custom_email_from_name($name) {
+	$name = get_bloginfo('name'); //oou troque por uma das variáveis
+	return $name;
+}

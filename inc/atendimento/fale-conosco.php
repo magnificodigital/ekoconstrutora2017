@@ -6,6 +6,7 @@
 			<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
 				<div class="row">
 					
+					<!--
 					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="service-form whatsapp-email" data-target="whatsapp">
 							<div class="service-form-content">
@@ -13,7 +14,7 @@
 								<i class="fa fa-envelope" aria-hidden="true"></i> E-mail
 							</div>
 						</div>
-					</div>
+					</div>-->
 
 					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="service-form ligamos-voce" data-target="ligaremos">
@@ -33,6 +34,7 @@
 						</div>
 					</div>
 
+					<!--
 					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="service-form agendar-visita">
 							<?php $phone = get_option('phone_icon'); ?>
@@ -41,10 +43,11 @@
 								o telefone
 							</div>
 						</div>
-					</div>
+					</div>-->
 				</div>
 
 				<?php $prefix = "whatsapp_"; ?>
+				<?php /*
 				<div id="wrapper-whatsapp" class="form-wrapper">
 					<form id="FaleConosco-WhatsApp" name="FaleConosco-WhatsApp" class="form" method="post">
 						<div class="row">
@@ -62,6 +65,9 @@
 									<input type="text" name="celular" class="tel" placeholder="Celular:" />
 								</label>
 								<input type="hidden" id="token_rdstation" name="token_rdstation" value="<?php echo $token; ?>">
+								<?php if (empty($token)): ?>
+								<input type="hidden" name="assunto" value="Nova conversão - WhatsApp - <?php bloginfo('name'); ?>">
+								<?php endif; ?>
 								<input type="hidden" id="identificador" name="identificador" value="Site <?php bloginfo('name'); ?> - WhatsApp">
 								<div class="resposta"></div>
 							</div>
@@ -76,7 +82,7 @@
 							</div>
 						</div>
 					</form>
-				</div>
+				</div> */ ?>
 
 
 				<?php $prefix = "ligaremos_"; ?>
@@ -97,6 +103,9 @@
 									<input type="text" name="celular" class="tel" placeholder="Celular:" />
 								</label>
 								<input type="hidden" id="token_rdstation" name="token_rdstation" value="<?php echo $token; ?>">
+								<?php if (empty($token)): ?>
+								<input type="hidden" name="assunto" value="Nova conversão - Ligamos para você - <?php bloginfo('name'); ?>">
+								<?php endif; ?>
 								<input type="hidden" id="identificador" name="identificador" value="Site <?php bloginfo('name'); ?> - Ligamos para você">
 								<div class="resposta"></div>
 							</div>
@@ -140,6 +149,9 @@
 									<input type="text" class="datepicker" name="data" placeholder="Data:" c required />
 								</label>
 								<input type="hidden" id="token_rdstation" name="token_rdstation" value="<?php echo $token; ?>">
+								<?php if (empty($token)): ?>
+								<input type="hidden" name="assunto" value="Nova conversão - Agendar Visita - <?php bloginfo('name'); ?>">
+								<?php endif; ?>
 								<input type="hidden" id="identificador" name="identificador" value="Site <?php bloginfo('name'); ?> - Agendar Visita">
 								<div class="resposta"></div>
 							</div>

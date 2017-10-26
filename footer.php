@@ -46,10 +46,10 @@
 				<div class="col-md-3 col-sm-3 col-xs-3">
 					<div class="row no-margin">
 						<div class="col-sm-3 no-padding">
-							<a href="<?php bloginfo('url'); ?>/central-de-atendimento/fale-conosco/"><div class="whatsapp-img"></div></a>
+							<a href="https://api.whatsapp.com/send?phone=5511940082635&text="><div class="whatsapp-img"></div></a>
 						</div>
 						<div class="col-sm-9 hidden-xs no-padding">
-							<a href="<?php bloginfo('url'); ?>/central-de-atendimento/fale-conosco/">
+							<a href="https://api.whatsapp.com/send?phone=5511940082635&text=" target="_blank">
 								<span class="line1">Atendimento</span><br />
 								<span class="line2">por WhatsApp</span>
 							</a>

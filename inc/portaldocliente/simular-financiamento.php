@@ -33,6 +33,9 @@
 							<input type="text" name="valorfgts" id="<?php echo $prefix; ?>valorfgts" placeholder="Valor do FGTS:" required disabled />
 						</label>
 						<input type="hidden" id="token_rdstation" name="token_rdstation" value="<?php echo $token; ?>">
+						<?php if (empty($token)): ?>
+						<input type="hidden" name="assunto" value="Nova conversão - Simule seu Financiamento - <?php bloginfo('name'); ?>">
+						<?php endif; ?>
 						<input type="hidden" id="identificador" name="identificador" value="Site <?php bloginfo('name'); ?> - Simular Financiamento">
 						<div class="resposta"></div>
 					</div>

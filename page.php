@@ -62,8 +62,11 @@ global $post; ?>
 										<label>
 											<p class="message"></p>
 										</label>
-										<?php $token = get_option('token'); ?>
+										
 										<input type="hidden" id="token_rdstation" name="token_rdstation" value="<?php echo $token; ?>">
+										<?php if (empty($token)): ?>
+										<input type="hidden" name="assunto" value="Nova conversão - Busca Avançada - <?php bloginfo('name'); ?>">
+										<?php endif; ?>
 										<input type="hidden" id="identificador" name="identificador" value="Site <?php bloginfo('name'); ?> - Busca Avançada">
 										<div class="resposta"></div>
 									</div>

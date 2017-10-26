@@ -17,6 +17,7 @@ $inicio = get_field('inicio_das_obras');
 $entrega = get_field('previsao_de_entrega');
 $logo = get_field('logo');
 $imagem = get_field('imagem_principal');
+$token = get_field('token_rd');
 $c = 1;
 $prices = wp_get_post_terms($post->ID, 'price');
 foreach ($prices as $price) {
@@ -377,24 +378,26 @@ foreach ($prices as $price) {
 								<?php 
 									global $post;
 									$post_slug = $post->post_name;
-									//$formname = 'formlateral_'.$post_slug;
 									$formname = 'form_lateral_eko';
-									$token = get_option('token_rd');
+									//$token = get_option('token_rd'); desativado porque não existe mais conta principal da eko
 								?>
 								<form id="<?php echo $formname; ?>" name="<?php echo $formname; ?>" class="form">
-									<label for="<?php echo $post_slug; ?>_nome">
+									<label for="nome">
 										<input type="text" name="nome" placeholder="Nome:" class="required" required />
 									</label>
-									<label for="<?php echo $post_slug; ?>_email">
+									<label for="email">
 										<input type="text" name="email" placeholder="E-mail:" class="required" required />
 									</label>								
-									<label for="<?php echo $post_slug; ?>_telefone">
+									<label for="telefone">
 										<input type="text" name="telefone" placeholder="Telefone:" class="tel" />
 									</label>
 									<input type="hidden" name="empreendimento" value="<?php the_title(); ?>">
 									<input type="hidden" id="token_rdstation" name="token_rdstation" value="<?php echo $token; ?>">
-									<input type="hidden" id="identificador" name="identificador" value="Site <?php bloginfo('name'); ?> - <?php the_title(); ?>">
-									<div class="resposta"></div>
+									<?php if (empty($token)): ?>
+									<input type="hidden" name="assunto" value="Nova conversão - <?php the_title(); ?> - <?php bloginfo('name'); ?>">
+									<?php endif; ?>
+									<input type="hidden" id="identificador" name="identificador" value="<?php bloginfo('name'); ?> - Site">
+									<div class="resposta "></div>
 									<button type="button">Enviar</button>
 								</form>
 							</div>

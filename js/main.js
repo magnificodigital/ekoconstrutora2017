@@ -637,7 +637,7 @@ function validateTel(tel) {
 }
 
 
-/*RD*/
+/* Conversão */
 $(function(){
 	var form = $('form.form');
 	var btn = form.find('button');
@@ -647,40 +647,43 @@ $(function(){
 		var form = $(this).parents('form:first');
 		var inputs = form.find(':input');
 		var dados = inputs.serializeArray();
+		var dados2 = inputs.serialize();
 		var text = $(this).val(); //Valor que estava no button
 		form.find('.required').removeClass('required-warning');
-		var id = form.attr('id');		
+		var id = form.attr('id');	
 
-		var email = "";
+		var email, token = "";
 
 		//Aqui vai descobrir o e-mail
 		dados.forEach(function(element) {
 			if (element.name === "email") {
 				email = element.value;
+			} else if (element.name === "token_rdstation") {
+				token = element.value;
 			}
 		});
 
 		form.find('.resposta').html('').removeClass('animated shake');
 		//$(this).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
 
-		//Validar campos requeridos
+		/*Validar campos requeridos*/
 		var required = form.find('.required').serializeArray();
 		var tel = form.find('.tel').serializeArray();
 
-		//Valida campos
+		/*Valida campos*/
 		if (!validateRequired(required)) {
 			form.find('.resposta').html('Preencha todos os campos obrigatórios').addClass('animated shake');
 			//form.find('.required').addClass('required-warning');
 			return false;
 		}
 
-		//Validar e-mail
+		/*Validar e-mail*/
 		if (!validateEmail(email) ) {
 			form.find('.resposta').html('Preencha o e-mail corretamente').addClass('animated shake');
 			return false;
 		}
 
-		//Valida telefones
+		/*Valida telefones*/
 		if (!validateTel(tel) && tel.length != 0) {
 			form.find('.resposta').html('Preencha pelo menos um telefone').addClass('animated shake');
 			return false;
@@ -692,8 +695,13 @@ $(function(){
 
 		$(this).remove();
 		inputs.val('');
-		form.find('.resposta').html('Obrigado pelo seu cadastro!');
-		RdIntegration.post(dados);
+
+		if (token != "") { /*Se tiver token, vai pro RD*/
+			RdIntegration.post(dados);
+			form.find('.resposta').html('Obrigado pelo seu cadastro');
+		} else {  /*Senao, envia um email*/
+			enviaemail(dados2);
+		}
 
 	});
 	

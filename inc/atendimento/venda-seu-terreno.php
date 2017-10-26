@@ -78,6 +78,9 @@
 							<textarea name="mensagem" placeholder="Mensagem:" class="required"></textarea>
 						</label>
 						<input type="hidden" id="token_rdstation" name="token_rdstation" value="<?php echo $token; ?>">
+						<?php if (empty($token)): ?>
+						<input type="hidden" name="assunto" value="Nova conversão - Venda Seu Terreno - <?php bloginfo('name'); ?>">
+						<?php endif; ?>
 						<input type="hidden" id="identificador" name="identificador" value="Site <?php bloginfo('name'); ?> - Venda Seu Terreno">
 						<div class="resposta"></div>
 					</div>

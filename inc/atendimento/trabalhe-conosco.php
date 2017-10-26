@@ -76,6 +76,7 @@
 							<textarea name="descricao" placeholder="Descrição:" required></textarea>
 						</label>
 						<input type="hidden" id="token_rdstation" name="token_rdstation" value="<?php echo $token; ?>">
+						<input type="hidden" name="assunto" value="Nova conversão - Trabalhe Conosco - <?php bloginfo('name'); ?>">
 						<input type="hidden" id="identificador" name="identificador" value="Site <?php bloginfo('name'); ?> - Trabalhe Conosco">
 						<div class="resposta"></div>
 					</div>
