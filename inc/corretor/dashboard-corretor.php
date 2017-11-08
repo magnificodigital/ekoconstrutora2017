@@ -20,7 +20,7 @@
 
 				<div class="campaign">
 					<a href="<?php echo get_the_permalink(); ?>"><h2><?php echo get_the_title(); ?></h2></a>
-					<p><?php the_excerpt(); ?></p>
+					<p><?php the_content(); ?></p>
 					<a href="<?php echo get_the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
 				</div>
 

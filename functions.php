@@ -35,12 +35,6 @@ function remove_head_scripts() {
 } 
 add_action( 'wp_enqueue_scripts', 'remove_head_scripts' );
 
-//Removendo arquivos desnecessários
-add_action( 'wp_enqueue_scripts', 'remove_unnecessary_requests', 99 );
-function remove_unnecessary_requests() {
-   // Seu código vem aqui
-}
-
 function post_type_imovel() {
 	register_post_type('imovel',
 		array(
@@ -165,7 +159,7 @@ function post_type_imovel() {
 		'public' => true,
 		'rewrite' => array('slug' => 'banner', 'with_front' => false),
 		'has_archive' => false,		 
-		'supports' => array('title','editor','thumbnail'),
+		'supports' => array('title','editor'),
 		'menu_icon' => 'dashicons-format-image',
 		'menu_position' => 5
 		)
@@ -217,7 +211,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Tipo do imóvel',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'type')  
+		'rewrite' => array('slug' => 'type', 'with_front' => false)  
 		)  	
 	);
 
@@ -229,7 +223,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Dormitórios',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'bedrooms')  
+		'rewrite' => array('slug' => 'bedrooms', 'with_front' => false)  
 		)  	
 	);
 
@@ -241,7 +235,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Suítes',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'suites')  
+		'rewrite' => array('slug' => 'suites', 'with_front' => false)  
 		)  	
 	);
 
@@ -253,7 +247,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Vagas de Garagem',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'garage')  
+		'rewrite' => array('slug' => 'garage', 'with_front' => false)  
 		)  	
 	);
 
@@ -265,7 +259,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Moradores',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'residents')  
+		'rewrite' => array('slug' => 'residents', 'with_front' => false)  
 		)  	
 	);
 
@@ -278,7 +272,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Cômodos',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'rooms')  
+		'rewrite' => array('slug' => 'rooms', 'with_front' => false)  
 		)  	
 	);
 
@@ -290,7 +284,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Cidade',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'city')  
+		'rewrite' => array('slug' => 'city', 'with_front' => false)  
 		)  	
 	);
 
@@ -302,7 +296,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Estado',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'state')  
+		'rewrite' => array('slug' => 'state', 'with_front' => false)  
 		)  	
 	);
 
@@ -314,7 +308,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Metragem',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'metreage')  
+		'rewrite' => array('slug' => 'metreage', 'with_front' => false)  
 		)  	
 	);
 
@@ -326,7 +320,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Estilo de Vida',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'life-style')  
+		'rewrite' => array('slug' => 'life-style', 'with_front' => false)  
 		)  	
 	);
 
@@ -338,7 +332,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Década de Nascimento',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'birth-year')  
+		'rewrite' => array('slug' => 'birth-year', 'with_front' => false)  
 		)  	
 	);
 
@@ -350,7 +344,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Estado Civil',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'marital-status')  
+		'rewrite' => array('slug' => 'marital-status', 'with_front' => false)  
 		)  	
 	);
 
@@ -362,7 +356,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Banheiros',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'bathroom')  
+		'rewrite' => array('slug' => 'bathroom', 'with_front' => false)  
 		)  	
 	);
 
@@ -374,7 +368,7 @@ function registra_taxonomias() {
 			'hierarchical' => true,  
 			'label' => 'Valor',  
 			'query_var' => true,
-			'rewrite' => array('slug' => 'price')  
+			'rewrite' => array('slug' => 'price', 'with_front' => false)  
 		)  
 	);
 
@@ -386,7 +380,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Gênero',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'genre')  
+		'rewrite' => array('slug' => 'genre', 'with_front' => false)  
 		)  	
 	);
 
@@ -398,7 +392,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Status da obra',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'status')  
+		'rewrite' => array('slug' => 'status', 'with_front' => false)  
 		)  	
 	);
 
@@ -409,7 +403,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Adicionais',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'adicionais')  
+		'rewrite' => array('slug' => 'adicionais', 'with_front' => false)  
 		)  	
 	);
 
@@ -421,7 +415,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Lugares',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'lugares'), 
+		'rewrite' => array('slug' => 'lugares', 'with_front' => false), 
 		)  	
 	);
 
@@ -445,7 +439,7 @@ function registra_taxonomias() {
 		'hierarchical' => true,  
 		'label' => 'Local',  
 		'query_var' => true,
-		'rewrite' => array('slug' => 'local')  
+		'rewrite' => array('slug' => 'local', 'with_front' => false)  
 		)  	
 	);
 
@@ -478,6 +472,7 @@ add_image_size('third-post',300,300, true);
 add_image_size('four-post',300,200, true);
 add_image_size('single-footer',320,80, true);
 add_image_size('colum-enterprise',300,500, true);
+add_image_size('banner-mobile',800,500, true);
 
 add_role(
     'corretor',
@@ -640,14 +635,14 @@ function registra_corretor() {
 	parse_str($_REQUEST['dados'], $array_dados);
 
 	//Fazer a mensagem com uma variavel $mensagem
-	$mensagem = 'Novo cadastro de corretor<br/>';
-	$mensagem .= 'Nome: '.$array_dados['cadastrocorretor_nome'].'<br />';
-	$mensagem .= 'E-mail: '.$array_dados['cadastrocorretor_email'].'<br />';
-	$mensagem .= 'CPF: '.$array_dados['cadastrocorretor_cpf'].'<br />';
-	$mensagem .= 'Telefone: '.$array_dados['cadastrocorretor_telefone'];
+	$mensagem = "Novo Cadastro de Corretor\n\n";
+	$mensagem .= "Nome: ".$array_dados['cadastrocorretor_nome']."\n";
+	$mensagem .= "E-mail: ".$array_dados['cadastrocorretor_email']."\n";
+	$mensagem .= "CPF: ".$array_dados['cadastrocorretor_cpf']."\n";
+	$mensagem .= "Telefone: ".$array_dados['cadastrocorretor_telefone'];
 
 
-	$email = 'caio@magnificodigital.com';
+	$email = get_option('email_envio');
 	$assunto = 'Novo cadastro de corretor';
 
 	//FAZER A VALIDAÇÃO
@@ -847,10 +842,6 @@ function envia_email() {
 			$mensagem .= $value."\n";
 		}
 	}
-	/*
-	$mensagem .= "Nome: ".$dados['nome']."\n";
-	$mensagem .= "E-mail: ".$dados['email']."\n";
-	$mensagem .= "Telefone: ".$dados['telefone'];	*/
 
 	if (wp_mail($to, $subject, $mensagem)) {
 		echo json_encode(array('mensagem' => 'Obrigado pelo seu cadastro'));
@@ -1181,11 +1172,17 @@ function myprefix_redirect_attachment_page() {
 }
 add_action( 'template_redirect', 'myprefix_redirect_attachment_page' );
 
-
-
 add_filter('wp_mail_from_name','custom_email_from_name');
 
 function custom_email_from_name($name) {
 	$name = get_bloginfo('name'); //oou troque por uma das variáveis
 	return $name;
 }
+
+//Permite zip e rar
+function custom_upload_mimes( $existing_mimes = array() ) {
+    $existing_mimes['rar'] = 'application/x-rar-compressed';
+    $existing_mimes['zip'] = 'application/zip';
+    return $existing_mimes;
+}
+add_filter( 'upload_mimes', 'custom_upload_mimes' );

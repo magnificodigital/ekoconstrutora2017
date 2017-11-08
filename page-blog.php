@@ -41,8 +41,11 @@
 			<a href="<?php bloginfo('url'); ?>/blog/"><img src="<?php bloginfo('template_url') ?>/images/blogeko.jpg" alt="Blog <?php bloginfo('name'); ?> - <?php echo single_cat_title() ?>" /></a>
 			<h1>Seja bem-vindo</h1>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-8 col-sm-7 col-xs-12">
 					<p>Fique por dentro de tudo sobre o mercado imobiliário e muitas dicas e novidades para o seu próximo imóvel.</p>
+				</div>
+				<div class="col-md-4 col-sm-5 col-xs-12">
+					<?php get_search_form(); ?>
 				</div>
 			</div>
 		</header>
@@ -59,7 +62,7 @@
 					'orderby' => 'date',
 					'order' => 'DESC',
 					'posts_per_page' => 5,
-					'paged'=>$paged,
+					'paged'=> $paged,
 				); 
 				$loop = new WP_Query($args);
 				$c = 1;
@@ -99,12 +102,13 @@
 						<figure class="<?php echo $figureclass; ?>">
 							<div class="thumb-image post-<?php the_ID(); ?>"></div>
 							<!--<div class="n-category"><?php the_category(', '); ?></div>-->
-							<h2><?php the_title(); ?></h2>
-							<?php $content = get_the_content(); ?>
-							<!--<p><?php echo substr($content,0,100);?>...</p>-->
-							<p><?php the_excerpt(); ?></p>
-							<p class="author">Postado por <span><?php the_author(); ?></span> • <?php the_time('d F Y'); ?></p>
-							<br />
+							<div class="entry-title">
+								<h2><?php the_title(); ?></h2>
+								<?php $content = get_the_content(); ?>
+								<!--<p><?php echo substr($content,0,100);?>...</p>-->
+								<p><?php //the_excerpt(); ?></p>
+								<p class="author">Postado por <span><?php the_author(); ?></span> • <?php the_time('d F Y'); ?></p>
+							</div>
 						</figure>
 					</a>
 				</div>
@@ -114,7 +118,7 @@
 				endif; ?>
 
 				<?php 
-				//echo $html;
+				
                 $big = 999999999;
                 $p = array(
                     'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),

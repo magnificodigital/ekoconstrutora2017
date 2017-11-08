@@ -7,6 +7,7 @@
 			'orderby' => 'date',
 			'order' => 'DESC',
 			'post_type' => 'banner',
+			'post_status' => array('publish'),
 			'tax_query' => array(
 		    	array(
 			    	'taxonomy' => 'local',
@@ -16,22 +17,42 @@
 			)
 		); 
 		$loop = new WP_Query($args);
-		if ($loop->have_posts()) : while ($loop->have_posts()) : $loop->the_post(); ?>
+		if ($loop->have_posts()) : while ($loop->have_posts()) : $loop->the_post();
 
-		<div class="item" style="background-image: url('<?php the_post_thumbnail_url(); ?>');">
+			if (wp_is_mobile()) {
+				$thumb = get_field('imagem_mobile',get_the_ID());
+				//$thumb = get_the_post_thumbnail_url(get_the_ID(),'banner-mobile');
+			} else {
+				$thumb = get_field('imagem_desktop',get_the_ID());
+				//$thumb = get_the_post_thumbnail_url();
+			}
+
+			$botao = get_field('aparecer_botao',get_the_ID());
+			$linkpersonalizado = get_field('link_personalizado_banner',get_the_ID());
+			$url = $linkpersonalizado;
+
+		?>
+
+
+		<?php if ($botao == false) : ?>
+			<?php if (isset($url) && !empty($url)) : ?>
+				<a href="<?php echo $url; ?>">
+			<?php endif; ?>
+		<?php endif; ?>
+		<div class="item" style="background-image: url('<?php echo $thumb; ?>');">
 
 			<?php
 			$imovel = get_field('link_imovel');
 			$id = $imovel->ID;
 			$name = $imovel->post_title;
 			$logo = get_field('logo_banner',get_the_ID());
-			$linkpersonalizado = get_field('link_personalizado_banner',get_the_ID());
 
+			/*
 			if (isset($linkpersonalizado) && !empty($linkpersonalizado)) {
 				$url = $linkpersonalizado;
 			} else {
 				$url = get_permalink($id);
-			} ?>
+			}*/ ?>
 
 			<figure id="banner_<?php echo $id; ?>" class="calltoaction">
 				<?php if (isset($logo) && !empty($logo)) : ?>
@@ -40,22 +61,33 @@
 				</div>
 				<?php endif; ?>
 				<?php the_content(); ?>
-				<a href="<?php echo $url; ?>" class="call" <?php if (isset($linkpersonalizado) && !empty($linkpersonalizado)) : ?> target="_blank" <?php endif; ?>>Conheça o empreendimento</a>
-				<?php $aparecelogo = get_field('aparecer_logo',get_the_ID()); ?>
 
-				<?php if (isset($aparecelogo) && !empty($aparecelogo)) {
-					echo '<style type="text/css">';
-					foreach ($aparecelogo as $device) {
-						if ($device == 'desktop') {
-							echo '@media only screen and (min-width: 768px) {#banner_'.$id.' .img-calltoaction {display: block;}}';
-						} elseif ($device == 'mobile') {
-							echo '@media only screen and (max-width: 768px) {#banner_'.$id.' .img-calltoaction {display: block;}}';
-						}
-					}
-					echo '</style>';
-				} ?>		
+				<?php if ($botao == true) : ?>
+					<?php if (isset($url) && !empty($url)) : ?>
+						<a href="<?php echo $url; ?>" class="call">Conheça o empreendimento</a>
+					<?php endif; ?>
+				<?php endif; ?>
 			</figure>
+			
 		</div>
+		<?php if ($botao == false) : ?>
+			<?php if (isset($url) && !empty($url)) : ?>
+				</a>
+			<?php endif; ?>
+		<?php endif; ?>
+
+		<?php $aparecelogo = get_field('aparecer_logo',get_the_ID()); ?>
+		<?php if (isset($aparecelogo) && !empty($aparecelogo)) {
+			echo '<style type="text/css">';
+			foreach ($aparecelogo as $device) {
+				if ($device == 'desktop') {
+					echo '@media only screen and (min-width: 768px) {#banner_'.$id.' .img-calltoaction {display: block;}}';
+				} elseif ($device == 'mobile') {
+					echo '@media only screen and (max-width: 768px) {#banner_'.$id.' .img-calltoaction {display: block;}}';
+				}
+			}
+			echo '</style>';
+		} ?>		
 		
 		<?php endwhile; endif; ?>
 		<?php wp_reset_postdata(); ?>

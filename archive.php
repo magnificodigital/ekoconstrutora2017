@@ -38,14 +38,15 @@
 				<?php elseif (is_category()) : ?>Categoria: 				
 				<?php endif; ?><?php echo single_cat_title() ?></h1>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-8 col-sm-7 col-xs-12">
 					<p>Fique por dentro de tudo sobre o mercado imobiliário e muitas dicas e novidades para o seu próximo imóvel.</p>
 				</div>
-				<?php if (is_author()) : ?>
-				<div class="col-md-offset-2 col-md-4">					
-					<p>Postado por: <strong><?php the_author(); ?></strong></p>
+				<div class="col-md-4 col-sm-5 col-xs-12">
+					<?php if (is_author()) : ?>
+						<p>Postado por: <strong><?php the_author(); ?></strong></p>
+					<?php endif; ?>
+					<?php get_search_form(); ?>
 				</div>
-				<?php endif; ?>
 			</div>
 		</header>
 		<section id="home-blog-posts">
@@ -94,12 +95,13 @@
 						<figure class="<?php echo $figureclass; ?>">
 							<div class="thumb-image post-<?php the_ID(); ?>"></div>
 							<!--<div class="n-category"><?php the_category(', '); ?></div>-->
-							<h2><?php the_title(); ?></h2>
-							<?php $content = get_the_content(); ?>
-							<!--<p><?php echo substr($content,0,100);?>...</p>-->
-							<p><?php the_excerpt(); ?></p>
-							<p class="author">Postado por <span><?php the_author(); ?></span> • <?php the_time('d F Y'); ?></p>
-							<br />
+							<div class="entry-title">
+								<h2><?php the_title(); ?></h2>
+								<?php $content = get_the_content(); ?>
+								<!--<p><?php echo substr($content,0,100);?>...</p>-->
+								<p><?php //the_excerpt(); ?></p>
+								<p class="author">Postado por <span><?php the_author(); ?></span> • <?php the_time('d F Y'); ?></p>
+							</div>
 						</figure>
 					</a>
 				</div>

@@ -124,7 +124,7 @@
 				</div>-->
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<ul>
-						<li><a href="<?php bloginfo('url') ?>/central-de-atendimento/corretoras-e-imobiliarias/">Corretores e imobiliárias</a></li>
+						<li><a href="<?php bloginfo('url') ?>/central-de-atendimento/corretores-e-imobiliarias/">Corretores e imobiliárias</a></li>
 						<li><a href="<?php bloginfo('url') ?>/blog/">Blog</a></li>
 						<li><a href="http://ekoconstrutora.com.br/mapa/" target="_blank">Mapa</a></li>
 					</ul>

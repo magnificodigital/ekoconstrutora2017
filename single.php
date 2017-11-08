@@ -3,18 +3,33 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<div class="thubmnail">
-					<img src="<?php the_post_thumbnail_url(); ?>" alt="Foto: <?php the_title(); ?>" title="<?php the_title(); ?>" />
+				<div class="thumb">
+					<?php the_post_thumbnail('',array('title' => 'Foto: '.get_the_title(),'alt' => 'Foto: '.get_the_title())); ?>
 				</div>
 				<header>
+					<p class="cats">Categorias:
+						<?php 
+							$categoria = get_the_category();
+							foreach ($categoria as $cat) {
+								$link = get_category_link($cat->term_id);
+								echo '<a href="'.$link.'">'.$cat->cat_name.'</a>, ';
+							}
+						 ?>
+					</p>
 					<h1><?php the_title(); ?></h1>
 					<p class="author">Postado por <?php the_author_posts_link(); ?> • <?php the_time('d F Y'); ?></p>
+
 				</header>
 				<?php get_template_part('inc/share'); ?>
 				<?php the_content(); ?>
+				
 				<div class="fb-comments" data-href="http://ekoconstrutora.com.br/?p=<?php the_ID(); ?>" data-numposts="5"></div>
+
 			</div>
 			<?php get_sidebar(); ?>
+		</div>
+		<div class="tags">
+			<?php the_tags('Tags: '); ?>
 		</div>
 	</div>
 	<?php get_template_part('inc/newsletter'); ?>
