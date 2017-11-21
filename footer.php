@@ -148,9 +148,26 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/assets/scripts.min.js"></script>
 <?php endif; ?>
 
-
 <script type ='text/javascript' src="https://d335luupugsy2.cloudfront.net/js/integration/stable/rd-js-integration.min.js"></script>
-<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/1f43a906-f1a1-427f-bb5d-30ea68ae49f5-loader.js"></script>
+
+<!--Eko Park-->
+<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/1ce3074e-c4d8-41bd-ab95-b8b9720d7fae-loader.js" ></script>
+
+<!--Horizontes-->
+<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/70d788c7-300a-4231-9a0e-7aa434d26862-loader.js" ></script>
+
+<!-- Ibis -->
+<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/0dd19967-e1eb-40c9-8121-7dd5d2f4baf7-loader.js" ></script>
+
+<!-- JM600 -->
+<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/fb5710b6-8cf4-48b7-afde-3322ec95e849-loader.js" ></script>
+
+<!-- Maximus -->
+<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/1520b872-a9a3-4746-a306-6e23a7013bd9-loader.js" ></script>
+
+<!-- Antigo painel RD
+<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/1f43a906-f1a1-427f-bb5d-30ea68ae49f5-loader.js"></script> -->
+
 
 
 <?php if (is_singular('imovel')) : //Sidebar fixa ?>
