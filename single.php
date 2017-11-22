@@ -20,9 +20,17 @@
 					<p class="author">Postado por <?php the_author_posts_link(); ?> • <?php the_time('d F Y'); ?></p>
 
 				</header>
-				<?php get_template_part('inc/share'); ?>
-				<?php the_content(); ?>
-				
+				<?php
+					get_template_part('inc/share');
+					the_content();
+					$form = get_field('codigo_formulario');
+					if (isset($form) && !empty($form)) {
+						echo '<div class="single-form-wrapper">';
+						echo $form;
+						echo '</div>';
+					}
+				?>
+			
 				<div class="fb-comments" data-href="http://ekoconstrutora.com.br/?p=<?php the_ID(); ?>" data-numposts="5"></div>
 
 			</div>

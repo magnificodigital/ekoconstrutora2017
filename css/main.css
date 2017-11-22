@@ -2777,4 +2777,7 @@ aside#sidebar ul {
     display: table;
     clear: both; }
 
+.single-form-wrapper {
+  display: block; }
+
 /*# sourceMappingURL=main.css.map */
