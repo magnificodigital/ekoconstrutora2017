@@ -100,8 +100,15 @@
 						echo '</style>';
 					} ?>		
 				</figure>
+
+				<?php if (wp_is_mobile()) {
+					$thumb = get_field('imagem_mobile',get_the_ID());
+				} else {
+					$thumb = get_field('imagem_desktop',get_the_ID());
+				} ?>
+
 				<style type="text/css">
-					#campanha .img-wrapper {background-image: url('<?php the_post_thumbnail_url(); ?>');}
+					#campanha .img-wrapper {background-image: url('<?php echo $thumb; ?>');}
 				</style>
 			</div>
 		</a>
